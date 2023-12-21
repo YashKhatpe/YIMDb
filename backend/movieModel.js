@@ -1,13 +1,21 @@
 // movieModel.js
-const mongoose = require('./db');
+const mongoose = require("./db");
 
 const movieSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
   title: String,
   overview: String,
   release_date: Date,
-  // Add more fields as needed
+  popularity: Number,
+  releaseDate: Date,
+  originalLanguage: String,
+  posterPath: String,
 });
 
-const Movie = mongoose.model('Movie', movieSchema);
+const Movie = mongoose.model("Movie", movieSchema);
 
-module.exports = Movie;
+module.exports = { Movie, movieSchema };
