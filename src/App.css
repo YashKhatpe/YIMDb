@@ -1,3 +1,36 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  --scrollerGrey: 219, 219, 219;
+  --lightGrey: 227, 227, 227;
+  --darkerGrey: 200, 200, 200;
+  --tmdbDarkBlue: 3, 37, 65;
+  --tmdbLightBlue: 1, 180, 228;
+  --tmdbLighterGreen: 192, 254, 207;
+  --tmdbLightGreen: 30, 213, 169;
+  --tmdbLogoGreen: 144, 206, 161;
+  --tmdbLogoOrange: 253, 193, 112;
+  --tmdbLogoRed: 217, 59, 99;
+  --accountSilver: 149, 149, 149;
+  --accountPink: 234, 20, 140;
+  --accountPurple: 128, 91, 231;
+  --accountGreen: 1, 210, 119;
+  --accountTeal: 1, 198, 172;
+  --accountLightBlue: 1, 180, 228;
+  --accountBlue: 1, 119, 210;
+  --accountOrange: 210, 119, 1;
+  --accountYellow: 210, 144, 1;
+  --accountRed: 212, 2, 66;
+  --imageBorderRadius: 8px;
+  --maxPrimaryPageWidth: 1400px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -27,7 +60,157 @@
 .App-link {
   color: #61dafb;
 }
+.nav-heading {
+  width: 152px;
+  text-align: center;
+  color: #61b2a1;
+}
 
+.navbar {
+  background-color: #032541;
+}
+
+.myform {
+  position: relative;
+  padding-top: 185px;
+  width: 85%;
+}
+
+.mycont {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-container {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrollbar */
+  white-space: nowrap; /* Prevent movie cards from wrapping to the next line */
+  padding: 20px; /* Optional padding for better aesthetics */
+}
+
+.movie-card {
+  min-width: 200px; /* Set a minimum width for each movie card */
+  margin-right: 10px; /* Optional margin between movie cards */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Style the scrollbar */
+.movie-container::-webkit-scrollbar {
+  width: 2px; /* Adjust the width of the scrollbar */
+}
+
+.movie-container::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb; /* Adjust the color and transparency of the scrollbar thumb */
+  border-radius: 4px; /* Adjust the border-radius of the scrollbar thumb */
+}
+
+.movie-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.singleImgSec {
+  position: relative;
+}
+
+.box {
+  position: absolute;
+  top: 91px;
+  left: 152px;
+  width: 250px;
+  height: 300px;
+}
+
+/* Trending switch */
+
+.selector {
+  align-items: stretch;
+  border: 1px solid rgba(var(--tmdbDarkBlue), 1);
+  border-radius: 30px;
+}
+
+.anchor {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.selector h3 {
+  font-size: 1em;
+  padding: 4px 20px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+.selector h3,
+section.new_index form input[type="submit"] {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.selector h3 a {
+  background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.selector h3 a {
+  transition: -webkit-text-fill-color 0.5s;
+  color: rgba(var(--tmdbDarkBlue), 1);
+}
+
+.glyphicons_v2 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+span.glyphicons_v2 {
+  display: none;
+  top: 3px;
+  display: none;
+  margin-left: 4px;
+  opacity: 1;
+  filter: invert(89%) sepia(21%) saturate(454%) hue-rotate(75deg)
+    brightness(104%) contrast(99%);
+}
+
+a.lock_all span,
+section.inner_content h3 span.glyphicons_v2 {
+  opacity: 0.4;
+}
+
+section.myimg {
+  background-image: url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/zZ3Cv1lz61V9OXXvtCPVtCFTVP7.jpg");
+  background-size: 100% 100%;
+  height: calc(100vh / 1.5);
+}
+
+/* .myflex {
+  display: flex!important;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
