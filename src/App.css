@@ -70,6 +70,10 @@ body {
   background-color: #032541;
 }
 
+.navHover:hover {
+  color: white;
+}
+
 .myform {
   position: relative;
   padding-top: 185px;
@@ -90,12 +94,17 @@ body {
   padding: 20px; /* Optional padding for better aesthetics */
 }
 
+
 .movie-card {
   min-width: 200px; /* Set a minimum width for each movie card */
   margin-right: 10px; /* Optional margin between movie cards */
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 10px;
+}
+
+.cardWidth{
+  width: 170px;
 }
 
 /* Style the scrollbar */

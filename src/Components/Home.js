@@ -4,13 +4,33 @@ import '../App.css'
 import Spinner from "./Spinner";
 // import { Link } from "react-router-dom";
 const API_KEY = 'f9c8168ed027bcef24dd5c46a213e522';
+const fetchMovieDetails = require("../FetchingFunctions/MovieDetails");
 const Home = () => {
   let i = 0;
   const [results, setResults] = useState([]);
   // const [page, setPage] = useState(1);
   let allResults = []
   const [loading, setLoading] = useState(false);
+  const [tvShowsState, setTvShowsState] = useState({});
   console.log("HEllo");
+
+  // const fetchDetails = async () => {
+  //   try {
+  //     const movieDetails = await fetchMovieDetails(
+  //     `https://api.themoviedb.org/3/movie/${id}?api_key=f9c8168ed027bcef24dd5c46a213e522`
+  //     );
+  //     console.log("Title: ", movieDetails.title);
+  //     setTvShowsState(movieDetails);
+  //     console.log("Movie Details Data", movieDetailstate);
+  //     console.log("Movie Budget", movieDetailstate.budget);
+  //     // setIsDataLoaded(true);
+      
+  //   } catch (error) {
+  //     console.error("Error fetching movie details:", error);
+  //     // setIsDataLoaded(true); // Set isDataLoaded to true even in case of an error
+      
+  //   }
+  // };
   
   const getMovies = async ()=> {
     let totalPage = 2;
@@ -65,7 +85,7 @@ const Home = () => {
         </h2>
     </div>
     {loading && <Spinner />}
-    <div className="movie-container ">
+    <div className="movie-container">
       {!loading && results.map((element, index)=> {
         return(
           <Movies key={index} 
@@ -89,74 +109,7 @@ const Home = () => {
         )
       })}
     </div>
-    <div className="mt-5 my-2" style={{paddingLeft: '50px'}} >
-        <h2>
-            <br/>
-            All Trending Movies & TV Shows - This Week
-        </h2>
-    </div>
-    <div className="movie-container">
-        {/* <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/> */}
-    </div>
-    <div className="mt-5 my-2" style={{paddingLeft: '50px'}} >
-        <h2>
-            <br/>
-            Trending Movies - Today
-        </h2>
-    </div>
-    <div className="movie-container">
-        {/* <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/> */}
-    </div>
-    <div className="mt-5 my-2" style={{paddingLeft: '50px'}} >
-        <h2>
-            <br/>
-            Trending Movies - This Week
-        </h2>
-    </div>
-    <div className="movie-container">
-        {/* <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/> */}
-    </div>
-    <div className="mt-5 my-2" style={{paddingLeft: '50px'}} >
-        <h2>
-            <br/>
-            Trending TV Shows - Today
-        </h2>
-    </div>
-    <div className="movie-container">
-        {/* <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/>
-        <Movies/> */}
-    </div>
+
     <div className="mt-5 my-2" style={{paddingLeft: '50px'}} >
         <h2>
             <br/>

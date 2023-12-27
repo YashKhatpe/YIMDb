@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <footer className="bd-footer py-4 py-md-5 mt-5 " style={{backgroundColor: '#032440'}}>
       <div className="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div className="row">
           <div className="col-lg-3 mb-3">
@@ -11,74 +11,43 @@ const Footer = () => {
               to="/"
               aria-label="Bootstrap"
             >
-              <span className="fs-5">Bootstrap</span>
+              <span className="fs-5 text-light">Bootstrap</span>
             </Link>
             <ul className="list-unstyled small">
-              <li className="mb-2">
-                Designed and built with all the love in the world by the{" "}
-                <Link to="/docs/5.3/about/team/">Bootstrap team</Link> with the
-                help of{" "}
-                <Link to="https://github.com/twbs/bootstrap/graphs/contributors">
-                  our contributors
+              <li className="mb-2 text-light">
+                Designed and built by Yash Khatpe
+              </li>
+              <li className="mb-2 text-light">
+                Code uploaded on my github 
+                <Link
+                  to="https://github.com/YashKhatpe/YIMDb/tree/main"
+                  target="_blank"
+                >
+                  <i class="fa-brands fa-github mx-2"></i>
                 </Link>
                 .
               </li>
-              <li className="mb-2">
-                Code licensed{" "}
-                <Link
-                  to="https://github.com/twbs/bootstrap/blob/main/LICENSE"
-                  target="_blank"
-                  rel="license noopener"
-                >
-                  MIT
-                </Link>
-                , docs{" "}
-                <Link
-                  to="https://creativecommons.org/licenses/by/3.0/"
-                  target="_blank"
-                  rel="license noopener"
-                >
-                  CC BY 3.0
-                </Link>
-                .
-              </li>
-              <li className="mb-2">Currently v5.3.2.</li>
             </ul>
           </div>
           <div className="col-6 col-lg-2 offset-lg-1 mb-3">
-            <h5>Links</h5>
+            <h5 className="text-light">Links</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <Link to="/">Home</Link>
               </li>
               <li className="mb-2">
-                <Link to="/docs/5.3/">Docs</Link>
+                <Link to="/popular">Popular</Link>
               </li>
               <li className="mb-2">
-                <Link to="/docs/5.3/examples/">Examples</Link>
+                <Link to="/top_rated">Top Rated</Link>
               </li>
               <li className="mb-2">
-                <Link to="https://icons.getbootstrap.com/">Icons</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="https://themes.getbootstrap.com/">Themes</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="https://blog.getbootstrap.com/">Blog</Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="https://cottonbureau.com/people/bootstrap"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Swag Store
-                </Link>
+                <Link to="/upcoming">Upcoming</Link>
               </li>
             </ul>
           </div>
           <div className="col-6 col-lg-2 mb-3">
-            <h5>Guides</h5>
+            <h5 className="text-light">Guides</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <Link to="/docs/5.3/getting-started/">Getting started</Link>
@@ -100,7 +69,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-6 col-lg-2 mb-3">
-            <h5>Projects</h5>
+            <h5 className="text-light">Projects</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <Link
@@ -150,7 +119,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-6 col-lg-2 mb-3">
-            <h5>Community</h5>
+            <h5 className="text-light">Community</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <Link
