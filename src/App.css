@@ -74,6 +74,10 @@ body {
   color: white;
 }
 
+.navbar-link:hover{
+  color: white;
+}
+
 .myform {
   position: relative;
   padding-top: 185px;
@@ -94,6 +98,10 @@ body {
   padding: 20px; /* Optional padding for better aesthetics */
 }
 
+.green-line-img {
+  background-image: url('https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg');
+  background-size: 100% 100%;
+}
 
 .movie-card {
   min-width: 200px; /* Set a minimum width for each movie card */

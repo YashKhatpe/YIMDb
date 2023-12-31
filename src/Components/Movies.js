@@ -45,7 +45,7 @@ const Movies = ({
   return (
     <>
       <div className="col-md-3 mx-4" style={{ width: "150px" }}>
-        <div className="card mx-2 cardWidth" style={{ height: "250px" }}>
+        <div className="card mx-2 cardWidth" style={{ height: "250px", borderRadius: '7px' }}>
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             className="card-img-top"

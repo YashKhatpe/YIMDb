@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import defaultImg from "./no_img.png";
 const fetchMovieDetails = require("../FetchingFunctions/MovieDetails");
 const SingleMovie = () => {
   const API_KEY = "f9c8168ed027bcef24dd5c46a213e522";
@@ -22,8 +23,17 @@ const SingleMovie = () => {
   const [results, setResults] = useState([]); // Contains details of every trailer video of the movie
   const [castResults, setCastResults] = useState([]); // Contains details of all the cast in the movie
   const [key, setKey] = useState([]); // Contains keys of every trailer's YouTube video
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [movieDetailstate, setMovieDetailstate] = useState({});
+  const [isDataLoaded, setIsDataLoaded] = useState(false); // TO check whether the data is loaded or not
+  const [movieDetailstate, setMovieDetailstate] = useState({}); 
+  const [pColorTag, setPColorTag] = useState('white');
+  const handleParaColor = ()=>{
+
+    if (pColorTag === 'white') {
+      setPColorTag('black');
+    } else {
+      setPColorTag('white')
+    }
+  }
 
   const fetchTrailer = async () => {
     try {
@@ -129,8 +139,8 @@ const SingleMovie = () => {
             className="form-check form-switch"
             style={{
               position: "relative",
-              width: "130px",
-              left: "1118px",
+              width: "222px",
+              left: "1030px",
               top: "22px",
             }}
           >
@@ -139,10 +149,11 @@ const SingleMovie = () => {
               type="checkbox"
               role="switch"
               id="flexSwitchCheckDefault"
+              onClick={handleParaColor}
               
             />
-            <label className="form-check-label" for="flexSwitchCheckDefault">
-              Switch Color
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{color: pColorTag}}>
+              Switch mode for visibility
             </label>
           </div>
           <div
@@ -173,10 +184,10 @@ const SingleMovie = () => {
             }}
           >
             <h2 style={{ marginBottom: "-13px" }}>
-              <p>{title ? title : name}</p>
+              <p style={{color: pColorTag}}>{title ? title : name}</p>
             </h2>
             <h6>
-              <p style={{ marginBottom: "8px" }}>
+              <p style={{ marginBottom: "8px", color: pColorTag }}>
                 (
                 {release_date
                   ? release_date.slice(0, 4)
@@ -184,7 +195,7 @@ const SingleMovie = () => {
                 )
               </p>
 
-              <p>
+              <p style={{color: pColorTag}}>
                 {movieDetailstate.runtime
                   ? `${Math.floor(Number(movieDetailstate.runtime) / 60)} h ${
                       Number(movieDetailstate.runtime) % 60
@@ -198,11 +209,11 @@ const SingleMovie = () => {
             >
               <i className="fa-solid fa-play mx-2"></i>View Trailer
             </button>
-            <p>
+            <p style={{color: pColorTag}}>
               Overview: <br />
               {overview}
             </p>
-            <p>
+            <p style={{color: pColorTag}}>
               Budget:{" "}
               {movieDetailstate.budget
                 ? movieDetailstate.budget
@@ -213,7 +224,7 @@ const SingleMovie = () => {
               'p'
             )} */}
 
-            <p>Overall Ratings by Users: {vote_average}</p>
+            <p style={{color: pColorTag}}>Overall Ratings by Users: {vote_average}</p>
           </div>
         </div>
       )}
@@ -277,13 +288,13 @@ const SingleMovie = () => {
             {castResults.map((element, index) => (
               <div key={index}>
                 <div className="col-md-3 mx-5" style={{ width: "250px" }}>
-                  {element.profile_path && (
+                  {element.name && (
                     <div
                       className="card mx-2 cardWidth"
                       style={{ width: "250px", height: "250px" }}
                     >
                       <img
-                        src={`https://image.tmdb.org/t/p/w500${element.profile_path}`}
+                        src={element.profile_path?`https://image.tmdb.org/t/p/w500${element.profile_path}`: defaultImg}
                         className="card-img-top"
                         alt="..."
                         style={{

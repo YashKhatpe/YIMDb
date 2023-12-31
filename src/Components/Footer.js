@@ -23,7 +23,7 @@ const Footer = () => {
                   to="https://github.com/YashKhatpe/YIMDb/tree/main"
                   target="_blank"
                 >
-                  <i class="fa-brands fa-github mx-2"></i>
+                  <i className="fa-brands fa-github mx-2"></i>
                 </Link>
                 .
               </li>
