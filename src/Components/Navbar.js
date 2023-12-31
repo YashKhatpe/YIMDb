@@ -15,6 +15,8 @@ const Navbar = () => {
           >
             <h2 className="navHover">YIMDb</h2>
           </Link>
+          <button className="btn btn-danger mx-3" style={{position: 'absolute', right: '140px'}}>Login</button>
+          <button className="btn btn-danger mx-3" style={{position: 'absolute', right: '58px'}}>Signup</button>
           <button
             className="navbar-toggler"
             type="button"
