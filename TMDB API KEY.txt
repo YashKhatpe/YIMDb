@@ -1,6 +1,6 @@
-TMDB API KEY: f9c8168ed027bcef24dd5c46a213e522
+TMDB API KEY: f9c8168ed027bcef24dd6yh5c46a213e12343232522
 
-Search Patten: https://api.themoviedb.org/3/search/movie?query=Interstellar&api_key=f9c8168ed027bcef24dd5c46a213e522
+Search Patten: https://api.themoviedb.org/3/search/movie?query=Interstellar&api_key=f9c8168ed027bcef24dd6yh5c46a213e12343232522
 
 Image Access: const baseImageUrl = 'https://image.tmdb.org/t/p/';
 const imageSize = 'w500'; // Adjust the size based on your preference
