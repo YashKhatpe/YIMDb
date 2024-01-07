@@ -17,5 +17,5 @@ const fetchMovieDetails = async (url)=> {
 
 };
 
-// fetchMovieDetails('https://api.themoviedb.org/3/trending/all/day?api_key=f9c8168ed027bcef24dd5c46a213e522');
+// fetchMovieDetails('https://api.themoviedb.org/3/trending/all/day?api_key=f9c8168ed027bcef24dd6yh5c46a213e12343232522');
 module.exports = fetchMovieDetails;
