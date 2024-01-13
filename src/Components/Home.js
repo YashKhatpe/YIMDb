@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import Movies from "./Movies";
 import '../App.css'
 import Spinner from "./Spinner";
-const API_KEY = 'f9c8168ed027bcef24dd5c46a213e522';
+const dotenv = require('dotenv')
+dotenv.config()
+const API_KEY = process.env.TMDB_API_KEY;
 const fetchMovieDetails = require("../FetchingFunctions/MovieDetails");
 const Home = () => {
   const [results, setResults] = useState([]);

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import defaultImg from "./no_img.png";
+const dotenv = require('dotenv')
+dotenv.config()
+const API_KEY = process.env.TMDB_API_KEY;
 const fetchMovieDetails = require("../FetchingFunctions/MovieDetails");
 const SingleMovie = () => {
-  const API_KEY = "f9c8168ed027bcef24dd5c46a213e522";
   const location = useLocation();
   const userData = location.state;
   console.log("Received user data: ", userData);
@@ -80,7 +82,7 @@ const SingleMovie = () => {
   const fetchDetails = async () => {
     try {
       const movieDetails = await fetchMovieDetails(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=f9c8168ed027bcef24dd5c46a213e522`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
       );
       console.log("Title: ", movieDetails.title);
       setMovieDetailstate(movieDetails);
