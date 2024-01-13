@@ -2,9 +2,12 @@
 
 # dependencies
 node_modules
+.env
 /.pnp
 .pnp.js
 config.json
+TMDB\ API\ KEY.txt
+
 # testing
 /coverage
 

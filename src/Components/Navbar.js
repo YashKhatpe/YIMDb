@@ -1,8 +1,12 @@
 import React from "react";
+// import axios from 'axios';
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from './Context/AuthContext';
 import "../App.css";
 const Navbar = () => {
   const location = useLocation();
+  const { logout } = useAuth();
+  
 
   return (
     <>
@@ -15,8 +19,11 @@ const Navbar = () => {
           >
             <h2 className="navHover">YIMDb</h2>
           </Link>
-          <button className="btn btn-danger mx-3" style={{position: 'absolute', right: '140px'}}>Login</button>
-          <button className="btn btn-danger mx-3" style={{position: 'absolute', right: '58px'}}>Signup</button>
+          <Link to='/loginPage' className="m3" style={{position: 'absolute', right: '160px'}}> <button className="btn btn-danger">Login</button></Link>
+          <Link to='/signupPage' className="mx-3" style={{position: 'absolute', right: '58px'}}><button className="btn btn-danger" >Signup</button>
+          </Link>
+          <button className="btn btn-danger"onClick={logout}>Logout</button>
+          
           <button
             className="navbar-toggler"
             type="button"

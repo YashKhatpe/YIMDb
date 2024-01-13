@@ -23,10 +23,12 @@ router.post('/signup', validateSignup, async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
+    let success = false;
     // Check whether the user with this email exists already
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({ error: "Sorry a user with this email already exists" })
+      success = false;
+      return res.status(500).json({success, error: "Sorry a user with this email already exists" })
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
@@ -45,12 +47,14 @@ router.post('/signup', validateSignup, async (req, res) => {
     // Creating a auth token to return to the user so that it can be verified by that token
     const authtoken = jwt.sign(data, JWT_SECRET);
 
-    res.json(user)
-    console.log({ authtoken })
+    success = true;
+    res.status(200).res.json({success, message: "User Signed Up Successfully", authtoken});
+    console.log({ authtoken });
 
   } catch (error) {
+    success = false;
     console.error(error.message);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({success, message: "Internal Server Error"});
   }
 })
 
@@ -84,7 +88,7 @@ router.post('/login', validateLogin, async(req,res)=> {
         if(!user) {
             //If the email is wrong return success as false and error stating invalid credentials
             success = false;
-            return res.status(404).json({success, error : "Please enter correct credentials"})
+            return res.status(400).json({success, error : "Please enter correct credentials"})
         }
         
         //If the user with that email exists then bcrypt the input pwd and compare with the pwd in the db for that email
@@ -93,7 +97,7 @@ router.post('/login', validateLogin, async(req,res)=> {
         // If the comparsion returns false again retrun success as false and error stating invalid credentials
         if(!passwordCompare){
             success = false;
-            return res.status(404).json({success, error : "Please enter correct credentials"})
+            return res.status(400).json({success, error : "Please enter correct credentials"})
         }
 
         // If everything is correct create the authtoken and return to the user
