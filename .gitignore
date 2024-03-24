@@ -10,7 +10,7 @@ package-lock.json
 config.json
 TMDB\ API\ KEY.txt
 secret.js
-# testing
+# testin
 /coverage
 
 # production
