@@ -1,18 +1,16 @@
+import secrets from './secret'
 import React, {useEffect, useState} from "react";
 import Movies from "./Movies";
 import '../App.css'
 import Spinner from "./Spinner";
-const dotenv = require('dotenv')
-dotenv.config()
-const API_KEY = process.env.TMDB_API_KEY;
+const API_KEY = secrets.apiKey;
 const fetchMovieDetails = require("../FetchingFunctions/MovieDetails");
 const Home = () => {
   const [results, setResults] = useState([]);
   const [fetchingMoviesDone, setfetchingMoviesDone] = useState(false);
   const [fetchingTvShowsDone, setFetchingTvShowsDone] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [tvShowsState, setTvShowsState] = useState([]);
-  console.log("Hello");
 
   
   const fetchDetails = async () => {
@@ -22,7 +20,7 @@ const Home = () => {
         `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
         );
         console.log("My-Title: ", movieDetails.results[0].title);
-        await setResults(movieDetails.results);
+        setResults(movieDetails.results);
         setfetchingMoviesDone(true);
       
       } catch (error) {
@@ -39,7 +37,7 @@ const Home = () => {
           `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`
           );
           console.log("My-TV-Shows Title: ", movieDetails.results[0].name);
-          await setTvShowsState(movieDetails.results);
+          setTvShowsState(movieDetails.results);
           setFetchingTvShowsDone(true);
         
       } catch (error) {
@@ -51,38 +49,11 @@ const Home = () => {
 
 
 
-  // const getMovies = async ()=> {
-  //   let totalPage = 2;
-  //   let page =1;
-    
-  //   try {
-  //     setLoading(true);
-  //     while (page <= totalPage) {
-  //       const allTrendingUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=${page}`;
-        
-  //       const data = await fetch(allTrendingUrl);
-  //       const parsedData = await data.json();
-
-  //       if (parsedData.results && Array.isArray(parsedData.results)) {
-  //         allResults = [...allResults, ...parsedData.results];
-  //       } else {
-  //         console.error("Invalid or missing 'results' property in API response:", parsedData);
-  //       }
-        
-  //       page++;
-  //     }
-  //     setLoading(false);
-  //     // Update the state once with all fetched data
-  //     setResults(allResults);
-  //   } catch (error) {
-  //     console.log("Error in fetching all trending movies: ", error);
-  //   }
-  // };
-
   useEffect(() => {
     // getMovies();
     if(!fetchingMoviesDone){
       fetchDetails();
+      
     }
     // eslint-disable-next-line
   }, []); // Empty dependency array to mimic componentDidMount

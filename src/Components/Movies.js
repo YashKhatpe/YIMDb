@@ -20,10 +20,11 @@ const Movies = ({
   vote_count,
 }) => {
 
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    naviagate(`/singleMovie/${id}`, {
+    console.log(title);
+    navigate(`/singleMovie/${id}`, {
       state: {
         title: title,
         name: name,

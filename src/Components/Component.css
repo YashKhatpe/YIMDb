@@ -1,0 +1,161 @@
+.maindiv{
+    height: 300px;
+    background-color: #1d313c;
+    background-image: url('https://www.themoviedb.org/assets/2/v4/account_pipes/silver-251bf173c626c8be6f61efdd85b7009a83b2f9dfa60b80b182351a02fa2a57ec.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.maindiv .circle-cont {
+    display: inline-block;
+    position: relative;
+    top: 40px;
+    left: 40px;
+    margin-right: 50px;
+    width: 125px;
+    height: 125px; 
+}
+
+
+.maindiv .circle {
+    width: 125px;
+    height: 125px;
+    background-color: grey;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 60px;
+}
+
+.maindiv h2, h3 {
+    color: white;
+    position: relative;
+    top: 40px;
+    left: 40px;
+    display: inline-block; 
+    white-space: nowrap;
+}
+
+
+.maindiv h5 {
+    color: #b9c0c5;
+    position: relative;
+    top: 40px;
+    left: 40px;
+    display: inline-block; 
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.userScore {
+    display: block;
+    position: relative;
+    width: 330px;
+    left: 174px;
+    bottom: 45px;
+}
+
+.userDetails {
+    display: inline-block;
+    position: relative;
+    bottom: 35px;
+}
+
+
+
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,60%)
+}
+
+.toggleColorDiv {
+    position: relative;
+    width: 222px;
+    left: 1030px;
+    top: 22px;
+}
+
+
+.box {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
+    top: 91px;
+    left: 110px;
+    width: 250px;
+    height: 300px;
+  }
+.box img {
+    background-size: 100% 100%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    position: relative;
+    top: 55px;
+    left: 388px;
+    color: white;
+    width: 860px;
+}
+
+.moreVideos img {
+    width: 250px;
+    height: 100%;
+    background-size: 100% 100%;
+    border-radius: 7px;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.moreVideoCard {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.topCast {
+    width: 250px; 
+    height: 250px
+}
+.topCast img {
+    width: 250px;
+    height: 100%;
+    background-size: 100% 100%;
+    border-radius: 7px;
+    box-shadow: 10px 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.topCastCard {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.round-button {
+    display: inline-block;
+    padding: 10px 15px; /* Adjust padding based on your design */
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    background-color: #032541; /* Set your desired background color */
+    color: #ffffff; /* Set your desired text color */
+    cursor: pointer;
+    font-size: 16px; /* Set your desired font size */
+    border: none;
+    outline: none;
+    position: relative;
+    bottom: 5px;
+}

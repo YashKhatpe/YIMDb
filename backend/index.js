@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth', require('./routes/userDetailsRoute'));
 app.get('/', (req, res) => {
     res.send('Hello world');
 })

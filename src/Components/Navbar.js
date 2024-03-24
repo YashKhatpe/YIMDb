@@ -1,12 +1,47 @@
-import React from "react";
-// import axios from 'axios';
-import { Link, useLocation } from "react-router-dom";
-import { useAuth } from './Context/AuthContext';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
+import { storeAuth } from '../features/loginDetails/loginAuth';
+import { useSelector, useDispatch } from 'react-redux'
 const Navbar = () => {
+  const authChecker = useSelector((state) => state.loginCreds.value)
+  const dispatch = useDispatch()
   const location = useLocation();
-  const { logout } = useAuth();
+  const navigate = useNavigate();
   
+  const LogoutFun = () => {
+    dispatch(storeAuth(''))
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("user-id");
+    // eslint-disable-next-line
+    document.cookie = "authtoken" + "=; expires=Thu, 01-Jan-01 00:00:01 GMT;";
+    navigate("/");
+    setLocalToken(null)
+  };
+  useEffect(() => {
+    console.log('Logout AuthChecker: ',authChecker);
+  }, [authChecker]);
+  
+  
+  const [localToken, setLocalToken] = useState(() => {
+    //                      <-----------------------IMP NOTE----------------------->
+    // We used local Storage to check user credentials but now we created  redux to store to the atuh tokem in a state so we will not use local Storage now.
+    // const localTokenVar = localStorage.getItem('token');
+    // return localTokenVar || null;
+  });
+  // useEffect(() => {
+  //   var localTokenVar = localStorage.getItem('token');
+  //   setLocalToken(localTokenVar || null);
+    
+  //   // Check if the token is present and navigate accordingly
+  //   if (localTokenVar) {
+  //     navigate(location.pathname);
+  //     console.log(location.pathname);
+  //   }
+  // }, []);
+
+
 
   return (
     <>
@@ -19,23 +54,61 @@ const Navbar = () => {
           >
             <h2 className="navHover">YIMDb</h2>
           </Link>
-          <Link to='/loginPage' className="m3" style={{position: 'absolute', right: '160px'}}> <button className="btn btn-danger">Login</button></Link>
-          <Link to='/signupPage' className="mx-3" style={{position: 'absolute', right: '58px'}}><button className="btn btn-danger" >Signup</button>
+          {!authChecker ? (
+            <>
+          <Link
+            to="/loginPage"
+            className="m3"
+            style={{ position: "absolute", right: "160px" }}
+          >
+            {" "}
+            <button className="btn btn-danger">Login</button>
           </Link>
-          <button className="btn btn-danger"onClick={logout}>Logout</button>
+          <Link
+            to="/signupPage"
+            className="mx-3"
+            style={{ position: "absolute", right: "58px" }}
+          >
+            <button className="btn btn-danger">Signup</button>
+          </Link>
+          </>
+          ):
+          (
+            <>
+          <Link to='/myacc'>
+            <div className="userLogo" >Y</div>
+          </Link>
           
+          
+          <button
+            className="btn btn-danger"
+            onClick={LogoutFun}
+            style={{
+              position: "absolute",
+              right: "80px",
+            }}
+            >
+            Logout
+          </button>
+          </>)}
+
           <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
+            // data-bs-target="#navbarSupportedContent"
+            data-bs-target="#navbarToggleExternalContent"
+            // aria-controls="navbarSupportedContent"
+            aria-controls="navbarToggleExternalContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse" 
+          // id ="navbarNav"
+          id="navbarToggleExternalContent"
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item ">
                 <Link

@@ -133,13 +133,6 @@ body {
   position: relative;
 }
 
-.box {
-  position: absolute;
-  top: 91px;
-  left: 152px;
-  width: 250px;
-  height: 300px;
-}
 
 /* Trending switch */
 
@@ -219,15 +212,30 @@ section.inner_content h3 span.glyphicons_v2 {
 section.myimg {
   background-image: url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/zZ3Cv1lz61V9OXXvtCPVtCFTVP7.jpg");
   background-size: 100% 100%;
-  height: calc(100vh / 1.5);
+  height: 400px;
 }
 
-/* .myflex {
-  display: flex!important;
-    flex-wrap: wrap;
-    align-content: stretch;
-    justify-content: center;
-} */
+.userLogo {
+  position: absolute;
+  right: 180px;
+  top: 26px;
+  width: 35px;
+  height: 35px;
+  background-color: grey;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  top: 20px;
+}
+
+.nav-link {
+  width: fit-content;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

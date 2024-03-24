@@ -13,13 +13,25 @@ import { AuthProvider } from "./Components/Context/AuthContext";
 // import PrivateRoute from "./Components/Route/PrivateRoute";
 import { useAuth } from './Components/Context/AuthContext';
 import MyAcc from "./Components/MyAcc";
+import AfterLogin from "./Components/AfterLogin";
+// import PleaseLogin from "./Components/PleaseLogin";
+// import ProtectedRoute from "./Components/ProtectedRoute";
+import { useEffect } from "react";
 function App() {
-   const { user } = useAuth();
-   console.log('User: ',user);
-  return (
-    <AuthProvider>
+   let { user } = useAuth();
+   useEffect(() => {
+     console.log('User: ',user);
+   }, [user]);
 
-    <BrowserRouter>
+   let token = localStorage.getItem('token');
+
+   useEffect(() => {
+     console.log('Token: ',token);
+   }, [token]);
+   return (
+     
+     <BrowserRouter>
+     <AuthProvider>
 
       <Navbar />
       <div>
@@ -29,14 +41,15 @@ function App() {
             <Route  exact path="/top_rated" element={<TopRated />} />
             <Route exact path="/upcoming" element={<Upcoming />} />
             <Route exact path="/loginPage" element={<Login />} />
-            <Route exact path="/myacc" element={user?<MyAcc/>:<Navigate to="/loginPage" />}/>
+            <Route exact path="/myacc" element={token?<MyAcc/>:<Navigate to="/loginPage" />}/>
             <Route exact path="/signupPage" element={<Signup />} />
+            <Route exact path="/afterLogin" element={<AfterLogin/>} />
             <Route exact path="/singleMovie/:movieId" element={<SingleMovie/>} />
         </Routes>
       </div>
       <Footer/>
-    </BrowserRouter>
     </AuthProvider>
+    </BrowserRouter>
   );
 }
 

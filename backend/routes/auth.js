@@ -31,12 +31,12 @@ router.post('/signup', validateSignup, async (req, res) => {
       return res.status(500).json({success, error: "Sorry a user with this email already exists" })
     }
     const salt = await bcrypt.genSalt(10);
-    const secPass = await bcrypt.hash(req.body.password, salt);
+    const encryptedPass = await bcrypt.hash(req.body.password, salt);
 
     // Create a new user
     user = await User.create({
       name: req.body.name,
-      password: secPass,
+      password: encryptedPass,
       email: req.body.email,
     });
     const data = {
@@ -46,9 +46,10 @@ router.post('/signup', validateSignup, async (req, res) => {
     }
     // Creating a auth token to return to the user so that it can be verified by that token
     const authtoken = jwt.sign(data, JWT_SECRET);
+    console.log("Hello", authtoken);
 
     success = true;
-    res.status(200).res.json({success, message: "User Signed Up Successfully", authtoken});
+    res.status(200).json({success, message: "User Signed Up Successfully", authtoken});
     console.log({ authtoken });
 
   } catch (error) {
@@ -57,6 +58,11 @@ router.post('/signup', validateSignup, async (req, res) => {
     res.status(500).json({success, message: "Internal Server Error"});
   }
 })
+
+
+
+
+
 
 
 
@@ -84,6 +90,7 @@ router.post('/login', validateLogin, async(req,res)=> {
     try {
         // Finding the user from the db on the basis of the email
         let user = await User.findOne({email})
+        // let id = user.id;
 
         if(!user) {
             //If the email is wrong return success as false and error stating invalid credentials
@@ -110,13 +117,15 @@ router.post('/login', validateLogin, async(req,res)=> {
 
         const authtoken = jwt.sign(data, JWT_SECRET);
         success = true;
-        res.status(200).json({success, message: "Logged In Successfully", authtoken})
+        res.status(200).json({success, message: "Logged In Successfully",id:user.id, authtoken})
         
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
     }
 })
+
+
 
 
 
@@ -137,6 +146,32 @@ router.get('/getuser', fetchuser,  async (req, res) => {
     res.status(500).send("Internal Server Error");
 }
 })
+
+
+
+
+
+
+
+// Get All the Users data from the databse and display it
+router.get('/getallusers', fetchuser,  async (req, res) => {
+// The fetchuser midddleware will compare the auth-token which will be obtained through the header in the get request and then this async function will run if it returns true
+  try {
+    
+    // The details of the user excluding the password will be displayed to the user from the db
+    const user = await User.find().select("-password")
+    
+    res.send(user);
+    console.log("User Fetched Successfully");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+}
+})
+
+
+
+
 
 
 
